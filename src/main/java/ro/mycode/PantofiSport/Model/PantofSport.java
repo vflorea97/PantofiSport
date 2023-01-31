@@ -23,6 +23,7 @@ public class PantofSport implements Comparable<PantofSport> {
     private String descriere;
     private String sku;
     private String culoare;
+    private String gen;
     private double marime;
     private double price;
     private int stoc;

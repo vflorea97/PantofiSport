@@ -3,34 +3,34 @@ package ro.mycode.PantofiSport.PantofRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import ro.mycode.PantofiSport.Model.PantofSport;
+import ro.mycode.PantofiSport.Model.PantofiSport;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-public interface PantofSportRepository extends JpaRepository<PantofSport, Long> {
+public interface PantofiSportRepository extends JpaRepository<PantofiSport, Long> {
 
     @Transactional
-    Optional<PantofSport> findBySku(String sku);
+    Optional<PantofiSport> findBySku(String sku);
 
     @Transactional
-    Optional<PantofSport> removePantofSportBySku(String sku);
+    Optional<PantofiSport> removePantofSportBySku(String sku);
 
     @Query("select p from PantofSport p order by p.numeProdus asc")
-    Optional<List<PantofSport>> getPantofSportByNumeProdus();
+    Optional<List<PantofiSport>> getPantofSportByNumeProdus();
 
     @Query("select p from PantofSport p order by p.price asc")
-    Optional<List<PantofSport>> getPantofSportByPriceA();
+    Optional<List<PantofiSport>> getPantofSportByPriceA();
 
     @Query("select p from PantofSport p order by p.price desc")
-    Optional<List<PantofSport>> getPantofSportByPriceD();
+    Optional<List<PantofiSport>> getPantofSportByPriceD();
 
     @Query("select p from PantofSport p where p.gen = 'M'")
-    Optional<List<PantofSport>> getPantofSportByGenM();
+    Optional<List<PantofiSport>> getPantofSportByGenM();
 
     @Query("select p from PantofSport p where p.gen = 'F'")
-    Optional<List<PantofSport>> getPantofSportByGenF();
+    Optional<List<PantofiSport>> getPantofSportByGenF();
 
     @Transactional
     @Modifying

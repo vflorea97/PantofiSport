@@ -1,8 +1,8 @@
 package ro.mycode.PantofiSport.Exceptii;
 
-public class ExceptiePantofSportStoc extends RuntimeException{
+public class ExceptiePantofiSportStoc extends RuntimeException{
 
-    public ExceptiePantofSportStoc() {
+    public ExceptiePantofiSportStoc() {
         super("Acest produs nu se mai afla in stoc!!");
     }
 }

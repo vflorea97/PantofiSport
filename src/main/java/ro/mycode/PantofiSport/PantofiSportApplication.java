@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import ro.mycode.PantofiSport.PantofRepository.PantofiSportRepository;
+import ro.mycode.PantofiSport.View.View;
 
 @SpringBootApplication
 public class PantofiSportApplication {
@@ -14,9 +15,10 @@ public class PantofiSportApplication {
 	}
 
     @Bean
-    public CommandLineRunner commandLineRunner(PantofiSportRepository pantofSportRepository){
+    public CommandLineRunner commandLineRunner(PantofiSportRepository pantofSportRepository, View view){
 
         return args -> {
+            view.play();
 //            Optional<PantofSport> pantofSport = pantofSportRepository.findBySku("49288-0402");
 //            System.out.println(pantofSport);
 
@@ -36,9 +38,6 @@ public class PantofiSportApplication {
 //            pantofSportRepository.updatePantofSportStoc(10, "49288-0402");
 //            pantofSportRepository.updatePantofSportPrice(300, "49288-0402");
 //            System.out.println(pantofSportRepository.findBySku("49288-0402"));
-
-            
-
         };
     }
 

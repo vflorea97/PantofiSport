@@ -11,6 +11,7 @@ import java.util.Optional;
 
 public interface PantofiSportRepository extends JpaRepository<PantofiSport, Long> {
 
+
     @Transactional
     Optional<PantofiSport> findBySku(String sku);
 
@@ -46,6 +47,7 @@ public interface PantofiSportRepository extends JpaRepository<PantofiSport, Long
     @Modifying
     @Query("update PantofSport p set p.marime = ?1 where p.sku = ?2")
     void updatePantofSportMarime(double marime, String sku);
+
 
 
 

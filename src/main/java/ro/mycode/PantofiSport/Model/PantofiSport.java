@@ -13,7 +13,7 @@ import javax.persistence.*;
 @SuperBuilder
 @Entity(name = "PantofSport")
 @Table(name = "pantofsport")
-public class PantofSport implements Comparable<PantofSport> {
+public class PantofiSport implements Comparable<PantofiSport> {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
@@ -29,7 +29,7 @@ public class PantofSport implements Comparable<PantofSport> {
     private int stoc;
 
     @Override
-    public int compareTo(PantofSport pantofSport) {
+    public int compareTo(PantofiSport pantofSport) {
         if (this.sku.compareTo(pantofSport.sku) > 0){
             return 1;
         }
@@ -42,7 +42,7 @@ public class PantofSport implements Comparable<PantofSport> {
 
     @Override
     public boolean equals(Object o){
-        PantofSport p = (PantofSport) o;
+        PantofiSport p = (PantofiSport) o;
         return this.sku.equals(p.sku);
     }
 }

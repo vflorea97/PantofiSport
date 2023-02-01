@@ -4,11 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import ro.mycode.PantofiSport.Model.PantofSport;
-import ro.mycode.PantofiSport.PantofRepository.PantofSportRepository;
-
-import java.util.List;
-import java.util.Optional;
+import ro.mycode.PantofiSport.PantofRepository.PantofiSportRepository;
 
 @SpringBootApplication
 public class PantofiSportApplication {
@@ -18,7 +14,7 @@ public class PantofiSportApplication {
 	}
 
     @Bean
-    public CommandLineRunner commandLineRunner(PantofSportRepository pantofSportRepository){
+    public CommandLineRunner commandLineRunner(PantofiSportRepository pantofSportRepository){
 
         return args -> {
 //            Optional<PantofSport> pantofSport = pantofSportRepository.findBySku("49288-0402");

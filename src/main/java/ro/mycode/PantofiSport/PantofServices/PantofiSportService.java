@@ -21,6 +21,15 @@ public class PantofiSportService {
         this.pantofSportRepository = pantofSportRepository;
     }
 
+    public Optional<PantofiSport> findPantofiSport(String sku) throws ExceptiePantofiSportNeexistent{
+        Optional<PantofiSport> pantofiSport = pantofSportRepository.findBySku(sku);
+        if (pantofiSport.isPresent()){
+            return pantofiSport;
+        }else {
+            throw new ExceptiePantofiSportNeexistent();
+        }
+    }
+
     public void afisarePantofISport(){
         List<PantofiSport> pantofiSports = pantofSportRepository.findAll();
         pantofiSports.forEach(p-> System.out.println(p));
@@ -29,8 +38,8 @@ public class PantofiSportService {
     @Transactional
     public void addPantofiSport(PantofiSport pantofiSport) throws ExceptiePantofiSportExistent{
         Optional<PantofiSport> pantofiSport1 = pantofSportRepository.findBySku(pantofiSport.getSku());
-        if (pantofiSport1.equals(Optional.empty())){
-            pantofSportRepository.save(pantofiSport);
+        if (pantofiSport1.isEmpty()){
+            pantofSportRepository.saveAndFlush(pantofiSport);
         }else {
             throw new ExceptiePantofiSportExistent();
         }
@@ -112,6 +121,8 @@ public class PantofiSportService {
             return pantofiSports;
         }else {
             throw new ExceptiePantofiSportDBEmpty();
+
+
         }
     }
 }

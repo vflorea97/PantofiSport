@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "pantofsport")
 public class PantofiSport implements Comparable<PantofiSport> {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Id
 
     private Long id;

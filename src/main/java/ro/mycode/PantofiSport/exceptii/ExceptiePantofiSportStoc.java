@@ -1,4 +1,4 @@
-package ro.mycode.PantofiSport.Exceptii;
+package ro.mycode.PantofiSport.exceptii;
 
 public class ExceptiePantofiSportStoc extends RuntimeException{
 

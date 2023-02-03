@@ -4,8 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import ro.mycode.PantofiSport.PantofRepository.PantofiSportRepository;
-import ro.mycode.PantofiSport.View.View;
+import ro.mycode.PantofiSport.pantofRepository.PantofiSportRepository;
+import ro.mycode.PantofiSport.view.View;
 
 @SpringBootApplication
 public class PantofiSportApplication {

@@ -1,4 +1,4 @@
-package ro.mycode.PantofiSport.Model;
+package ro.mycode.PantofiSport.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

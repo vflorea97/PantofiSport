@@ -1,10 +1,10 @@
-package ro.mycode.PantofiSport.View;
+package ro.mycode.PantofiSport.view;
 
 import org.springframework.stereotype.Component;
-import ro.mycode.PantofiSport.Exceptii.ExceptiePantofiSportExistent;
-import ro.mycode.PantofiSport.Exceptii.ExceptiePantofiSportNeexistent;
-import ro.mycode.PantofiSport.Model.PantofiSport;
-import ro.mycode.PantofiSport.PantofServices.PantofiSportService;
+import ro.mycode.PantofiSport.exceptii.ExceptiePantofiSportExistent;
+import ro.mycode.PantofiSport.exceptii.ExceptiePantofiSportNeexistent;
+import ro.mycode.PantofiSport.model.PantofiSport;
+import ro.mycode.PantofiSport.pantofServices.PantofiSportService;
 
 import java.util.List;
 import java.util.Scanner;
@@ -12,8 +12,8 @@ import java.util.Scanner;
 @Component
 public class View {
 
-    private PantofiSportService pantofiSportService;
-    private Scanner scanner;
+    private final PantofiSportService pantofiSportService;
+    private final Scanner scanner;
 
     public View(PantofiSportService pantofiSportService){
         this.pantofiSportService = pantofiSportService;
@@ -45,7 +45,7 @@ public class View {
             int buton = Integer.parseInt(scanner.nextLine());
             switch (buton){
                 case 1:
-                    pantofiSportService.afisarePantofISport();
+                    pantofiSportService.gelAllPantofiSport();
                     break;
                 case 2:
                     addPantofiSport();
@@ -142,7 +142,7 @@ public class View {
         System.out.println("introdu noul pret:");
         double price = Double.parseDouble(scanner.nextLine());
         try{
-            pantofiSportService.updatePantofSportPrice(price, sku);
+            pantofiSportService.updatePantofiSportPrice(price, sku);
             System.out.println("Ai updata produsul cu succes!!");
             System.out.println(pantofiSportService.findPantofiSport(sku));
         }catch (ExceptiePantofiSportNeexistent e){
@@ -155,7 +155,7 @@ public class View {
         System.out.println("introdu noul stoc:");
         int stoc = Integer.parseInt(scanner.nextLine());
         try{
-            pantofiSportService.updatePantofSportStoc(stoc, sku);
+            pantofiSportService.updatePantofiSportStoc(stoc, sku);
             System.out.println("Ai updata produsul cu succes!!");
             System.out.println(pantofiSportService.findPantofiSport(sku));
         }catch (ExceptiePantofiSportNeexistent e){
@@ -168,7 +168,7 @@ public class View {
         System.out.println("introdu noua marime:");
         double marime = Double.parseDouble(scanner.nextLine());
         try{
-            pantofiSportService.updatePantofSportMarime(marime, sku);
+            pantofiSportService.updatePantofiSportMarime(marime, sku);
             System.out.println("Ai updata produsul cu succes!!");
             System.out.println(pantofiSportService.findPantofiSport(sku));
         }catch (ExceptiePantofiSportNeexistent e){
@@ -178,9 +178,9 @@ public class View {
 
     public void getPantofSportByNumeProdus(){
         try {
-            List<PantofiSport> pantofiSports = pantofiSportService.getPantofSportByNumeProdus();
-            for (int i = 0; i < pantofiSports.size(); i++){
-                System.out.println(pantofiSports.get(i));
+            List<PantofiSport> pantofiSports = pantofiSportService.getPantofiSportByNumeProdus();
+            for (PantofiSport pantofiSport : pantofiSports) {
+                System.out.println(pantofiSport);
             }
         }catch (ExceptiePantofiSportNeexistent e){
             System.err.println(e.getMessage());
@@ -188,9 +188,9 @@ public class View {
     }
     public void getPantofSportByPriceA(){
         try {
-            List<PantofiSport> pantofiSports = pantofiSportService.getPantofSportByPriceA();
-            for (int i = 0; i < pantofiSports.size(); i++){
-                System.out.println(pantofiSports.get(i));
+            List<PantofiSport> pantofiSports = pantofiSportService.getPantofiSportByPriceA();
+            for (PantofiSport pantofiSport : pantofiSports) {
+                System.out.println(pantofiSport);
             }
         }catch (ExceptiePantofiSportNeexistent e){
             System.err.println(e.getMessage());
@@ -198,9 +198,9 @@ public class View {
     }
     public void getPantofSportByPriceD(){
         try {
-            List<PantofiSport> pantofiSports = pantofiSportService.getPantofSportByPriceD();
-            for (int i = 0; i < pantofiSports.size(); i++){
-                System.out.println(pantofiSports.get(i));
+            List<PantofiSport> pantofiSports = pantofiSportService.getPantofiSportByPriceD();
+            for (PantofiSport pantofiSport : pantofiSports) {
+                System.out.println(pantofiSport);
             }
         }catch (ExceptiePantofiSportNeexistent e){
             System.err.println(e.getMessage());
@@ -208,9 +208,9 @@ public class View {
     }
     public void getPantofSportByGenM(){
         try {
-            List<PantofiSport> pantofiSports = pantofiSportService.getPantofSportByGenM();
-            for (int i = 0; i < pantofiSports.size(); i++){
-                System.out.println(pantofiSports.get(i));
+            List<PantofiSport> pantofiSports = pantofiSportService.getPantofiSportByGenM();
+            for (PantofiSport pantofiSport : pantofiSports) {
+                System.out.println(pantofiSport);
             }
         }catch (ExceptiePantofiSportNeexistent e){
             System.err.println(e.getMessage());
@@ -218,9 +218,9 @@ public class View {
     }
     public void getPantofSportByGenF(){
         try {
-            List<PantofiSport> pantofiSports = pantofiSportService.getPantofSportByGenF();
-            for (int i = 0; i < pantofiSports.size(); i++){
-                System.out.println(pantofiSports.get(i));
+            List<PantofiSport> pantofiSports = pantofiSportService.getPantofiSportByGenF();
+            for (PantofiSport pantofiSport : pantofiSports) {
+                System.out.println(pantofiSport);
             }
         }catch (ExceptiePantofiSportNeexistent e){
             System.err.println(e.getMessage());

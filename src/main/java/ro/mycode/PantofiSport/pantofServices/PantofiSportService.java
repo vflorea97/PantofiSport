@@ -1,12 +1,12 @@
-package ro.mycode.PantofiSport.PantofServices;
+package ro.mycode.PantofiSport.pantofServices;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
-import ro.mycode.PantofiSport.Exceptii.ExceptiePantofiSportDBEmpty;
-import ro.mycode.PantofiSport.Exceptii.ExceptiePantofiSportExistent;
-import ro.mycode.PantofiSport.Exceptii.ExceptiePantofiSportNeexistent;
-import ro.mycode.PantofiSport.Model.PantofiSport;
-import ro.mycode.PantofiSport.PantofRepository.PantofiSportRepository;
+import ro.mycode.PantofiSport.exceptii.ExceptiePantofiSportDBEmpty;
+import ro.mycode.PantofiSport.exceptii.ExceptiePantofiSportExistent;
+import ro.mycode.PantofiSport.exceptii.ExceptiePantofiSportNeexistent;
+import ro.mycode.PantofiSport.model.PantofiSport;
+import ro.mycode.PantofiSport.pantofRepository.PantofiSportRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -30,9 +30,9 @@ public class PantofiSportService {
         }
     }
 
-    public void afisarePantofISport(){
+    public List<PantofiSport> gelAllPantofiSport(){
         List<PantofiSport> pantofiSports = pantofSportRepository.findAll();
-        pantofiSports.forEach(p-> System.out.println(p));
+        return pantofiSports;
     }
 
     @Transactional
@@ -55,74 +55,73 @@ public class PantofiSportService {
     }
     @Transactional
     @Modifying
-    public void updatePantofSportPrice(double price, String sku) throws ExceptiePantofiSportNeexistent{
+    public void updatePantofiSportPrice(double price, String sku) throws ExceptiePantofiSportNeexistent{
         Optional<PantofiSport> pantofiSport = pantofSportRepository.findBySku(sku);
         if (pantofiSport.isPresent()){
-            pantofSportRepository.updatePantofSportPrice(price, sku);
+            pantofSportRepository.updatePantofiSportPrice(price, sku);
         }else {
             throw new ExceptiePantofiSportNeexistent();
         }
     }
     @Transactional
     @Modifying
-    public void updatePantofSportStoc(int stoc, String sku) throws ExceptiePantofiSportNeexistent{
+    public void updatePantofiSportStoc(int stoc, String sku) throws ExceptiePantofiSportNeexistent{
         Optional<PantofiSport> pantofiSport = pantofSportRepository.findBySku(sku);
         if (pantofiSport.isPresent()){
-            pantofSportRepository.updatePantofSportStoc(stoc, sku);
+            pantofSportRepository.updatePantofiSportStoc(stoc, sku);
         }else {
             throw new ExceptiePantofiSportNeexistent();
         }
     }
     @Transactional
     @Modifying
-    public void updatePantofSportMarime(double marime, String sku) throws ExceptiePantofiSportNeexistent{
+    public void updatePantofiSportMarime(double marime, String sku) throws ExceptiePantofiSportNeexistent{
         Optional<PantofiSport> pantofiSport = pantofSportRepository.findBySku(sku);
         if (pantofiSport.isPresent()){
-            pantofSportRepository.updatePantofSportMarime(marime, sku);
+            pantofSportRepository.updatePantofiSportMarime(marime, sku);
         }else {
             throw new ExceptiePantofiSportNeexistent();
         }
     }
-    public List<PantofiSport> getPantofSportByNumeProdus() throws ExceptiePantofiSportDBEmpty{
-        List<PantofiSport> pantofiSport = pantofSportRepository.getPantofSportByNumeProdus().get();
+    public List<PantofiSport> getPantofiSportByNumeProdus() throws ExceptiePantofiSportDBEmpty{
+        List<PantofiSport> pantofiSport = pantofSportRepository.getPantofiSportByNumeProdus().get();
         if (pantofiSport.size() > 0){
             return pantofiSport;
         }else {
             throw new ExceptiePantofiSportDBEmpty();
         }
     }
-    public List<PantofiSport> getPantofSportByPriceA() throws ExceptiePantofiSportDBEmpty{
-        List<PantofiSport> pantofiSports = pantofSportRepository.getPantofSportByPriceA().get();
+    public List<PantofiSport> getPantofiSportByPriceA() throws ExceptiePantofiSportDBEmpty{
+        List<PantofiSport> pantofiSports = pantofSportRepository.getPantofiSportByPriceA().get();
         if (pantofiSports.size() > 0){
             return pantofiSports;
         }else {
             throw new ExceptiePantofiSportDBEmpty();
         }
     }
-    public List<PantofiSport> getPantofSportByPriceD() throws ExceptiePantofiSportDBEmpty{
-        List<PantofiSport> pantofiSports = pantofSportRepository.getPantofSportByPriceD().get();
+    public List<PantofiSport> getPantofiSportByPriceD() throws ExceptiePantofiSportDBEmpty{
+        List<PantofiSport> pantofiSports = pantofSportRepository.getPantofiSportByPriceD().get();
         if (pantofiSports.size() > 0){
             return pantofiSports;
         }else {
             throw new ExceptiePantofiSportDBEmpty();
         }
     }
-    public List<PantofiSport> getPantofSportByGenM() throws ExceptiePantofiSportDBEmpty{
-        List<PantofiSport> pantofiSports = pantofSportRepository.getPantofSportByGenM().get();
+    public List<PantofiSport> getPantofiSportByGenM() throws ExceptiePantofiSportDBEmpty{
+        List<PantofiSport> pantofiSports = pantofSportRepository.getPantofiSportByGenM().get();
         if (pantofiSports.size() > 0){
             return pantofiSports;
         }else {
             throw new ExceptiePantofiSportDBEmpty();
         }
     }
-    public List<PantofiSport> getPantofSportByGenF() throws ExceptiePantofiSportDBEmpty{
-        List<PantofiSport> pantofiSports = pantofSportRepository.getPantofSportByGenF().get();
+    public List<PantofiSport> getPantofiSportByGenF() throws ExceptiePantofiSportDBEmpty{
+        List<PantofiSport> pantofiSports = pantofSportRepository.getPantofiSportByGenF().get();
         if (pantofiSports.size() > 0){
             return pantofiSports;
         }else {
             throw new ExceptiePantofiSportDBEmpty();
+        }
+    }
 
-
-        }
-    }
 }

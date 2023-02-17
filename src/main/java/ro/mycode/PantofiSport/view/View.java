@@ -45,7 +45,7 @@ public class View {
             int buton = Integer.parseInt(scanner.nextLine());
             switch (buton){
                 case 1:
-                    pantofiSportService.gelAllPantofiSport();
+                    afisare();
                     break;
                 case 2:
                     addPantofiSport();
@@ -100,6 +100,12 @@ public class View {
         }
     }
 
+    public void afisare(){
+        List<PantofiSport> pantofiSports = pantofiSportService.gelAllPantofiSport();
+        for (PantofiSport pantofiSport: pantofiSports){
+            System.out.println(pantofiSport);
+        }
+    }
     public void addPantofiSport(){
         System.out.println("Introdu denumirea produsului:");
         String numeProdus= scanner.nextLine();

@@ -18,7 +18,7 @@ public class PantofiSportApplication {
     public CommandLineRunner commandLineRunner(PantofiSportRepository pantofSportRepository, View view){
 
         return args -> {
-            view.play();
+//            view.play();
 //            Optional<PantofSport> pantofSport = pantofSportRepository.findBySku("49288-0402");
 //            System.out.println(pantofSport);
 

@@ -48,6 +48,9 @@ public interface PantofiSportRepository extends JpaRepository<PantofiSport, Long
     @Query("update PantofSport p set p.marime = ?1 where p.sku = ?2")
     void updatePantofiSportMarime(double marime, String sku);
 
+    Optional<PantofiSport> findBySkuAndPrice(String sku,double price);
+    Optional<PantofiSport> findBySkuAndStoc(String sku,int stoc);
+    Optional<PantofiSport> findBySkuAndMarime(String sku,double marime);
 
 
 

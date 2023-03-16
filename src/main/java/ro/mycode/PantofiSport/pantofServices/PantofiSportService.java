@@ -2,6 +2,7 @@ package ro.mycode.PantofiSport.pantofServices;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+import ro.mycode.PantofiSport.dto.PantofiSportDTO;
 import ro.mycode.PantofiSport.exceptii.ExceptiePantofiSportDBEmpty;
 import ro.mycode.PantofiSport.exceptii.ExceptiePantofiSportExistent;
 import ro.mycode.PantofiSport.exceptii.ExceptiePantofiSportNeexistent;
@@ -30,9 +31,13 @@ public class PantofiSportService {
         }
     }
 
-    public List<PantofiSport> gelAllPantofiSport(){
+    public List<PantofiSport> gelAllPantofiSport() throws ExceptiePantofiSportDBEmpty{
         List<PantofiSport> pantofiSports = pantofSportRepository.findAll();
-        return pantofiSports;
+        if (pantofiSports.size() >0) {
+            return pantofiSports;
+        }else{
+            throw new ExceptiePantofiSportDBEmpty();
+        }
     }
 
     @Transactional
@@ -79,6 +84,30 @@ public class PantofiSportService {
         Optional<PantofiSport> pantofiSport = pantofSportRepository.findBySku(sku);
         if (pantofiSport.isPresent()){
             pantofSportRepository.updatePantofiSportMarime(marime, sku);
+        }else {
+            throw new ExceptiePantofiSportNeexistent();
+        }
+    }
+    @Transactional
+    @Modifying
+    public void updatePantofiSport(PantofiSportDTO pantofiSportDTO) throws ExceptiePantofiSportNeexistent {
+        Optional<PantofiSport> pantofiSport = pantofSportRepository.findById(pantofiSportDTO.getId());
+        if (pantofiSport.isPresent()){
+            PantofiSport ps = pantofiSport.get();
+
+            if (!pantofiSportDTO.getCuloare().equals("")){
+                ps.setCuloare(pantofiSportDTO.getCuloare());
+            }
+            if (pantofiSportDTO.getStoc() != -1){
+                ps.setStoc(pantofiSportDTO.getStoc());
+            }
+            if (pantofiSportDTO.getMarime() !=0){
+                ps.setMarime(pantofiSportDTO.getMarime());
+            }
+            if (pantofiSportDTO.getPrice() !=0){
+                ps.setPrice(pantofiSportDTO.getPrice());
+            }
+            pantofSportRepository.saveAndFlush(ps);
         }else {
             throw new ExceptiePantofiSportNeexistent();
         }

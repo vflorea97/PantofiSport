@@ -13,8 +13,8 @@ public class PantofiSportDTO {
 
     @NotNull
     private Long id;
-    private String culoare;
-    private double marime;
-    private double price;
-    private int stoc;
+    private String culoare = "";
+    private double marime = 0;
+    private double price = 0;
+    private int stoc = 0;
 }

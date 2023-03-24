@@ -33,7 +33,7 @@ public class PantofiSportService {
 
     public List<PantofiSport> gelAllPantofiSport() throws ExceptiePantofiSportDBEmpty{
         List<PantofiSport> pantofiSports = pantofSportRepository.findAll();
-        if (pantofiSports.size() >0) {
+        if (pantofiSports.size() > 0) {
             return pantofiSports;
         }else{
             throw new ExceptiePantofiSportDBEmpty();
